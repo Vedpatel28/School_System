@@ -1,3 +1,4 @@
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:student_marksheet_generator_exam/utils/routes_utils.dart';
@@ -15,6 +16,10 @@ class _homepageState extends State<homepage> {
     Size s = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
+        leading: const Icon(
+          Icons.add,
+          color: Colors.transparent,
+        ),
         title: Text(
           "Student App",
           style: GoogleFonts.schoolbell(
@@ -27,7 +32,7 @@ class _homepageState extends State<homepage> {
         centerTitle: true,
       ),
       body: Padding(
-        padding: const EdgeInsets.all(20),
+        padding: const EdgeInsets.all(12),
         child: Container(
           height: s.height * 0.9,
           width: s.width,
@@ -63,7 +68,8 @@ class _homepageState extends State<homepage> {
                     const Spacer(),
                     IconButton(
                       onPressed: () {
-                        Navigator.of(context).pushNamed(allroutes.studentdetailspage);
+                        Navigator.of(context)
+                            .pushNamed(allroutes.studentdetailspage);
                       },
                       icon: const Icon(Icons.navigate_next_rounded, size: 30),
                     ),
@@ -92,7 +98,8 @@ class _homepageState extends State<homepage> {
                     const Spacer(),
                     IconButton(
                       onPressed: () {
-                        Navigator.of(context).pushNamed(allroutes.studentmarksheetpage);
+                        Navigator.of(context)
+                            .pushNamed(allroutes.studentmarksheetpage);
                       },
                       icon: const Icon(Icons.navigate_next_rounded, size: 30),
                     ),
@@ -121,7 +128,8 @@ class _homepageState extends State<homepage> {
                     const Spacer(),
                     IconButton(
                       onPressed: () {
-                        Navigator.of(context).pushNamed(allroutes.caretmarksheetpage);
+                        Navigator.of(context)
+                            .pushNamed(allroutes.caretmarksheetpage);
                       },
                       icon: const Icon(Icons.navigate_next_rounded, size: 30),
                     ),
@@ -131,6 +139,37 @@ class _homepageState extends State<homepage> {
             ),
           ),
         ),
+      ),
+      bottomNavigationBar: CurvedNavigationBar(
+        buttonBackgroundColor: Colors.transparent,
+        backgroundColor: Colors.transparent,
+        animationCurve: Curves.linear,
+        color: Colors.black26,
+        height: 60,
+        index: 0,
+        items: [
+          GestureDetector(
+              onTap: () {
+                Navigator.of(context).pushNamed(allroutes.homepage);
+              },
+              child: const Icon(Icons.home_rounded, size: 30,color: Colors.black,)),
+          GestureDetector(
+              onTap: () {
+                Navigator.of(context).pushNamed(allroutes.studentdetailspage);
+              },
+              child: const Icon(Icons.account_circle_outlined, size: 30,color: Colors.black,)),
+          GestureDetector(
+              onTap: () {
+                Navigator.of(context).pushNamed(allroutes.studentmarksheetpage);
+              },
+              child: const Icon(Icons.addchart_rounded, size: 30,color: Colors.black,)),
+          GestureDetector(
+              onTap: () {
+                Navigator.of(context)
+                    .pushNamed(allroutes.caretmarksheetpage);
+              },
+              child: const Icon(Icons.picture_as_pdf_outlined, size: 30,color: Colors.black,)),
+        ],
       ),
     );
   }

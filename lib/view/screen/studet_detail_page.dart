@@ -1,6 +1,8 @@
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:student_marksheet_generator_exam/utils/back_button.dart';
+import 'package:student_marksheet_generator_exam/utils/routes_utils.dart';
 import 'package:student_marksheet_generator_exam/view/componect/snackbar_com.dart';
 import 'package:student_marksheet_generator_exam/view/modals/global_varibal.dart';
 import 'package:student_marksheet_generator_exam/view/modals/modals.dart';
@@ -185,6 +187,37 @@ class _studentdetailpageState extends State<studentdetailpage> {
             ),
           ),
         ),
+      ),
+      bottomNavigationBar: CurvedNavigationBar(
+        buttonBackgroundColor: Colors.transparent,
+        backgroundColor: Colors.transparent,
+        animationCurve: Curves.linear,
+        color: Colors.black26,
+        height: 60,
+        index: 1,
+        items: [
+          GestureDetector(
+              onTap: () {
+                Navigator.of(context).pushNamed(allroutes.homepage);
+              },
+              child: const Icon(Icons.home_rounded, size: 30,color: Colors.black,)),
+          GestureDetector(
+              onTap: () {
+                Navigator.of(context).pushNamed(allroutes.studentdetailspage);
+              },
+              child: const Icon(Icons.account_circle_outlined, size: 30,color: Colors.black,)),
+          GestureDetector(
+              onTap: () {
+                Navigator.of(context).pushNamed(allroutes.studentmarksheetpage);
+              },
+              child: const Icon(Icons.addchart_rounded, size: 30,color: Colors.black,)),
+          GestureDetector(
+              onTap: () {
+                Navigator.of(context)
+                    .pushNamed(allroutes.caretmarksheetpage);
+              },
+              child: const Icon(Icons.picture_as_pdf_outlined, size: 30,color: Colors.black,)),
+        ],
       ),
     );
   }

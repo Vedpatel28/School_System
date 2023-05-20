@@ -19,7 +19,7 @@ class _splash_page extends State<splash_page> {
 
   void changeScreen() {
     Timer.periodic(
-      const Duration(seconds: 8),
+      const Duration(seconds: 6),
       (timer) {
         setState(() {
           aniestyle = FlutterLogoStyle.horizontal;
@@ -64,7 +64,7 @@ class _splash_page extends State<splash_page> {
                       decoration: const BoxDecoration(
                         shape: BoxShape.circle,
                         image: DecorationImage(
-                          image: NetworkImage("https://icon-library.com/images/school-app-icon/school-app-icon-3.jpg"),
+                          image: NetworkImage("https://hertzai.com/logo_anim_original.gif"),
                           fit: BoxFit.cover,
                         ),
                       ),

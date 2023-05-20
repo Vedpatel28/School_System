@@ -1,6 +1,8 @@
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:student_marksheet_generator_exam/utils/back_button.dart';
+import 'package:student_marksheet_generator_exam/utils/routes_utils.dart';
 import 'package:student_marksheet_generator_exam/view/componect/snackbar_com.dart';
 import 'package:student_marksheet_generator_exam/view/modals/global_varibal.dart';
 import 'package:student_marksheet_generator_exam/view/modals/modals.dart';
@@ -31,11 +33,52 @@ class _Marksheet_addState extends State<Marksheet_add> {
           ),
         ),
         centerTitle: true,
+        actions: [
+          GestureDetector(
+            onTap: () {
+              if (formkey.currentState!.validate()) {
+                formkey.currentState!.save();
+                allGlobalvar.allmarcks.add(
+                  marcks(
+                    Biologymo: allGlobalvar.Biology!,
+                    Mathsmo: allGlobalvar.Maths!,
+                    Englishmo: allGlobalvar.English!,
+                    Physicsmo: allGlobalvar.Physics!,
+                    Chemistrymo: allGlobalvar.Chemistry!,
+                  ),
+                );
+                ScaffoldMessenger.of(context).showSnackBar(
+                  errorsnackBar(
+                    text: "Successfully validated !!",
+                    color: Colors.green,
+                  ),
+                );
+              } else {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  errorsnackBar(
+                    text: "Sum thing Error !!",
+                    color: Colors.redAccent,
+                  ),
+                );
+              }
+              Navigator.of(context).pop();
+            },
+            child: Icon(
+              Icons.check_rounded,
+              size: s.height * 0.035,
+            ),
+          ),
+          Icon(
+            Icons.add,
+            size: s.height * 0.02,
+            color: Colors.transparent,
+          ),
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(20),
         child: SingleChildScrollView(
-          child: Container(
+          child: SizedBox(
             height: s.height * 0.8,
             width: s.width,
             child: Form(
@@ -57,9 +100,13 @@ class _Marksheet_addState extends State<Marksheet_add> {
                       ),
                       const Spacer(),
                       SizedBox(
-                        width: s.width * 0.5,
+                        width: s.width * 0.4,
                         child: TextFormField(
-                          initialValue: (allGlobalvar.Maths == null) ? null : allGlobalvar.Maths.toString(),
+                          maxLength: 2,
+                          keyboardType: TextInputType.number,
+                          initialValue: (allGlobalvar.Maths == null)
+                              ? null
+                              : allGlobalvar.Maths.toString(),
                           textInputAction: TextInputAction.next,
                           validator: (value) {
                             if (value!.isEmpty) {
@@ -96,9 +143,13 @@ class _Marksheet_addState extends State<Marksheet_add> {
                       ),
                       const Spacer(),
                       SizedBox(
-                        width: s.width * 0.5,
+                        width: s.width * 0.4,
                         child: TextFormField(
-                          initialValue: (allGlobalvar.English == null) ? null : allGlobalvar.English.toString(),
+                          maxLength: 2,
+                          keyboardType: TextInputType.number,
+                          initialValue: (allGlobalvar.English == null)
+                              ? null
+                              : allGlobalvar.English.toString(),
                           textInputAction: TextInputAction.next,
                           validator: (value) {
                             if (value!.isEmpty) {
@@ -135,9 +186,13 @@ class _Marksheet_addState extends State<Marksheet_add> {
                       ),
                       const Spacer(),
                       SizedBox(
-                        width: s.width * 0.5,
+                        width: s.width * 0.4,
                         child: TextFormField(
-                          initialValue: (allGlobalvar.Biology == null) ? null : allGlobalvar.Biology.toString(),
+                          maxLength: 2,
+                          keyboardType: TextInputType.number,
+                          initialValue: (allGlobalvar.Biology == null)
+                              ? null
+                              : allGlobalvar.Biology.toString(),
                           textInputAction: TextInputAction.next,
                           validator: (value) {
                             if (value!.isEmpty) {
@@ -174,9 +229,13 @@ class _Marksheet_addState extends State<Marksheet_add> {
                       ),
                       const Spacer(),
                       SizedBox(
-                        width: s.width * 0.5,
+                        width: s.width * 0.4,
                         child: TextFormField(
-                          initialValue: (allGlobalvar.Physics == null) ? null : allGlobalvar.Physics.toString(),
+                          maxLength: 2,
+                          keyboardType: TextInputType.number,
+                          initialValue: (allGlobalvar.Physics == null)
+                              ? null
+                              : allGlobalvar.Physics.toString(),
                           textInputAction: TextInputAction.next,
                           validator: (value) {
                             if (value!.isEmpty) {
@@ -212,11 +271,14 @@ class _Marksheet_addState extends State<Marksheet_add> {
                         ),
                       ),
                       const Spacer(),
-                      Container(
-                        width: s.width * 0.5,
+                      SizedBox(
+                        width: s.width * 0.4,
                         child: TextFormField(
-                          initialValue: (allGlobalvar.Chemistry == null) ? null : allGlobalvar.Chemistry.toString(),
-                          textInputAction: TextInputAction.next,
+                          maxLength: 2,
+                          keyboardType: TextInputType.number,
+                          initialValue: (allGlobalvar.Chemistry == null)
+                              ? null
+                              : allGlobalvar.Chemistry.toString(),
                           validator: (value) {
                             if (value!.isEmpty) {
                               return "Enter Mark Properly";
@@ -233,75 +295,62 @@ class _Marksheet_addState extends State<Marksheet_add> {
                             border: OutlineInputBorder(),
                             hintText: 'Enter Macks',
                           ),
-                          onFieldSubmitted: (value) {
-                            if (formkey.currentState!.validate()) {
-                              formkey.currentState!.save();
-                              allGlobalvar.allmarcks.add(
-                                marcks(
-                                  Biologymo: allGlobalvar.Biology!,
-                                  Mathsmo: allGlobalvar.Maths,
-                                  Englishmo: allGlobalvar.English,
-                                  Physicsmo: allGlobalvar.Physics,
-                                  Chemistrymo: allGlobalvar.Chemistry,
-                                ),
-                              );
-                              allGlobalvar.totalmarcks =
-                                  allGlobalvar.Chemistry! + allGlobalvar.Maths! + allGlobalvar.English! + allGlobalvar.Physics!;
-                              Navigator.of(context).pop();
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                errorsnackBar(
-                                  text: "Successfully validated !!",
-                                  color: Colors.green,
-                                ),
-                              );
-                            } else {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                errorsnackBar(
-                                  text: "Failled to validate !!",
-                                  color: Colors.red,
-                                ),
-                              );
-                            }
-                          },
                         ),
                       ),
                     ],
                   ),
                   const Spacer(),
-                  // Total Marks
-                  // Row(
-                  //   children: [
-                  //     GestureDetector(
-                  //       onTap: () {
-                  //         setState(() {});
-                  //       },
-                  //       child: Text(
-                  //         "Total Marks : ",
-                  //         style: GoogleFonts.schoolbell(
-                  //           textStyle: TextStyle(
-                  //             fontSize: s.height * 0.03,
-                  //             fontWeight: FontWeight.bold,
-                  //           ),
-                  //         ),
-                  //       ),
-                  //     ),
-                  //     const Spacer(),
-                  //     Text(
-                  //       '${allGlobalvar.totalmarcks}',
-                  //       style: GoogleFonts.schoolbell(
-                  //         textStyle: TextStyle(
-                  //           fontSize: s.height * 0.04,
-                  //           fontWeight: FontWeight.bold,
-                  //         ),
-                  //       ),
-                  //     ),
-                  //   ],
-                  // ),
                 ],
               ),
             ),
           ),
         ),
+      ),
+      bottomNavigationBar: CurvedNavigationBar(
+        buttonBackgroundColor: Colors.transparent,
+        backgroundColor: Colors.transparent,
+        animationCurve: Curves.linear,
+        color: Colors.black26,
+        height: 60,
+        index: 2,
+        items: [
+          GestureDetector(
+              onTap: () {
+                Navigator.of(context).pushNamed(allroutes.homepage);
+              },
+              child: const Icon(
+                Icons.home_rounded,
+                size: 30,
+                color: Colors.black,
+              )),
+          GestureDetector(
+              onTap: () {
+                Navigator.of(context).pushNamed(allroutes.studentdetailspage);
+              },
+              child: const Icon(
+                Icons.account_circle_outlined,
+                size: 30,
+                color: Colors.black,
+              )),
+          GestureDetector(
+              onTap: () {
+                Navigator.of(context).pushNamed(allroutes.studentmarksheetpage);
+              },
+              child: const Icon(
+                Icons.addchart_rounded,
+                size: 30,
+                color: Colors.black,
+              )),
+          GestureDetector(
+              onTap: () {
+                Navigator.of(context).pushNamed(allroutes.caretmarksheetpage);
+              },
+              child: const Icon(
+                Icons.picture_as_pdf_outlined,
+                size: 30,
+                color: Colors.black,
+              )),
+        ],
       ),
     );
   }
