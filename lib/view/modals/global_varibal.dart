@@ -12,9 +12,17 @@ class allGlobalvar {
   static String? standard;
   static String? classof;
 
-  // static int? totalmarcks;
+  static int? totalmarcks;
+
+  static double? percentage;
+
+  static int? AchievedMarks;
+
+  static List grading = ['A+','A','B+','B','C'];
+
+
 
   static List<marcks> allmarcks = [];
 
-  // static List<detail> alldetail = [];
+static List<detail> alldetail = [];
 }

@@ -30,35 +30,107 @@ class _pdfmarcksheetState extends State<pdfmarcksheet> {
       pw.Page(
         margin: pw.EdgeInsets.zero,
         build: (pw.Context context) => pw.Container(
-          height: 120,
-          width: 100,
+          height: 500,
+          width: 350,
           alignment: pw.Alignment.center,
           decoration: const pw.BoxDecoration(
             color: PdfColors.white,
           ),
-          child: pw.Row(
-            children: [
-              pw.Text(
-                "Total Marks : ${allGlobalvar.Maths}",
-                style: pw.TextStyle(
-                  fontSize: 14,
-                  fontWeight: pw.FontWeight.bold,
+          child: pw.Padding(
+            padding: const pw.EdgeInsets.all(20),
+            child: pw.Row(
+              children: [
+                pw.Column(
+                  crossAxisAlignment: pw.CrossAxisAlignment.start,
+                  children: [
+                    pw.Container(
+                      height: 150,
+                      width: double.infinity,
+                      child: pw.Column(
+                        children: [
+                          // pw.Text(
+                          //   "Maths = ${allGlobalvar.allmarcks[0].Mathsmo}",
+                          //   style: pw.TextStyle(
+                          //     fontSize: 20,
+                          //     fontWeight: pw.FontWeight.bold,
+                          //   ),
+                          // ),
+                          // pw.Text(
+                          //   "Biology = ${allGlobalvar.Biology}",
+                          //   style: pw.TextStyle(
+                          //     fontSize: 20,
+                          //     fontWeight: pw.FontWeight.bold,
+                          //   ),
+                          // ),pw.Text(
+                          //   "Physics = ${allGlobalvar.Physics}",
+                          //   style: pw.TextStyle(
+                          //     fontSize: 20,
+                          //     fontWeight: pw.FontWeight.bold,
+                          //   ),
+                          // ),pw.Text(
+                          //   "English = ${allGlobalvar.English}",
+                          //   style: pw.TextStyle(
+                          //     fontSize: 20,
+                          //     fontWeight: pw.FontWeight.bold,
+                          //   ),
+                          // ),pw.Text(
+                          //   "Chemistry = ${allGlobalvar.Chemistry}",
+                          //   style: pw.TextStyle(
+                          //     fontSize: 20,
+                          //     fontWeight: pw.FontWeight.bold,
+                          //   ),
+                          // ),
+                        ],
+                      ),
+                    ),
+                    pw.Text(
+                      "All Subject Total Marks : 500",
+                      style: pw.TextStyle(
+                        fontSize: 22,
+                        fontWeight: pw.FontWeight.bold,
+                      ),
+                    ),
+                    pw.SizedBox(height: 20),
+                    pw.Text(
+                      "Achieved Marks : ${allGlobalvar.totalmarcks}",
+                      style: pw.TextStyle(
+                        fontSize: 22,
+                        fontWeight: pw.FontWeight.bold,
+                      ),
+                    ),
+                    pw.SizedBox(height: 20),
+                    pw.Text(
+                      "grading = ${allGlobalvar.grading[1]}",
+                      style: pw.TextStyle(
+                        fontSize: 22,
+                        fontWeight: pw.FontWeight.bold,
+                      ),
+                    ),
+                    pw.SizedBox(height: 20),
+                    pw.Text(
+                      "percentage = ${allGlobalvar.percentage}",
+                      style: pw.TextStyle(
+                        fontSize: 22,
+                        fontWeight: pw.FontWeight.bold,
+                      ),
+                    ),
+
+                  ],
                 ),
-              ),
-              pw.Spacer(),
-              //   pw.Text(
-              //       '${markcall.sum(
-              //         Biologymo: allGlobalvar.Biology,
-              //         Mathsmo: allGlobalvar.Maths,
-              //         Englishmo: allGlobalvar.English,
-              //         Physicsmo: allGlobalvar.Physics,
-              //         Chemistrymo: allGlobalvar.Chemistry,) }',
-              //   style: pw.TextStyle(
-              //   fontSize: 14,
-              //   fontWeight: pw.FontWeight.bold,
-              //   ),
-              // ),
-            ],
+                //   pw.Text(
+                //       '${markcall.sum(
+                //         Biologymo: allGlobalvar.Biology,
+                //         Mathsmo: allGlobalvar.Maths,
+                //         Englishmo: allGlobalvar.English,
+                //         Physicsmo: allGlobalvar.Physics,
+                //         Chemistrymo: allGlobalvar.Chemistry,) }',
+                //   style: pw.TextStyle(
+                //   fontSize: 14,
+                //   fontWeight: pw.FontWeight.bold,
+                //   ),
+                // ),
+              ],
+            ),
           ),
         ),
       ),

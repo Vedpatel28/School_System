@@ -13,8 +13,8 @@ class marcks {
       required Biologymo,
       required Englishmo,
       required Mathsmo}) {
-    // return allGlobalvar.totalmarcks =
-    //     Mathsmo! + Englishmo! + Biologymo! + Physicsmo! + Chemistrymo!;
+    return allGlobalvar.totalmarcks =
+        Mathsmo! + Englishmo! + Biologymo! + Physicsmo! + Chemistrymo!;
   }
 
   marcks({

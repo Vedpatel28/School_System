@@ -279,7 +279,7 @@ class _Marksheet_addState extends State<Marksheet_add> {
                   Row(
                     children: [
                       Text(
-                        "Chemistry : ${allGlobalvar.Chemistry}",
+                        "Chemistry :",
                         style: GoogleFonts.schoolbell(
                           textStyle: TextStyle(
                             fontSize: s.height * 0.03,
