@@ -36,15 +36,40 @@ class _Marksheet_addState extends State<Marksheet_add> {
         actions: [
           GestureDetector(
             onTap: () {
+
+              // if (formkey.currentState!.validate()) {
+              //   formkey.currentState!.save();
+              //   allGlobalvar.allContact.add(
+              //     contacts(
+              //       firstname: allGlobalvar.Fname!,
+              //       lastname: allGlobalvar.Lname!,
+              //       Contact: allGlobalvar.Pnumber!,
+              //       email: allGlobalvar.Email!,
+              //       image: allGlobalvar.image!,
+              //     ),
+              //   );
+              //   ScaffoldMessenger.of(context).showSnackBar(
+              //     errorsnackBar(
+              //       text: "Successfully Add Contact",
+              //       color: Colors.green,
+              //     ),
+              //   );
+              // } else {
+              //   ScaffoldMessenger.of(context).showSnackBar(
+              //     errorsnackBar(
+              //         text: "Sum thing Error !!", color: Colors.redAccent),
+              //   );
+              // }
+
               if (formkey.currentState!.validate()) {
                 formkey.currentState!.save();
                 allGlobalvar.allmarcks.add(
                   marcks(
-                    Biologymo: allGlobalvar.Biology!,
-                    Mathsmo: allGlobalvar.Maths!,
-                    Englishmo: allGlobalvar.English!,
-                    Physicsmo: allGlobalvar.Physics!,
-                    Chemistrymo: allGlobalvar.Chemistry!,
+                    Biologymo: allGlobalvar.Biology,
+                    Mathsmo: allGlobalvar.Maths,
+                    Englishmo: allGlobalvar.English,
+                    Physicsmo: allGlobalvar.Physics,
+                    Chemistrymo: allGlobalvar.Chemistry,
                   ),
                 );
                 ScaffoldMessenger.of(context).showSnackBar(
@@ -104,9 +129,7 @@ class _Marksheet_addState extends State<Marksheet_add> {
                         child: TextFormField(
                           maxLength: 2,
                           keyboardType: TextInputType.number,
-                          initialValue: (allGlobalvar.Maths == null)
-                              ? null
-                              : allGlobalvar.Maths.toString(),
+                          initialValue: allGlobalvar.Maths,
                           textInputAction: TextInputAction.next,
                           validator: (value) {
                             if (value!.isEmpty) {
@@ -147,9 +170,7 @@ class _Marksheet_addState extends State<Marksheet_add> {
                         child: TextFormField(
                           maxLength: 2,
                           keyboardType: TextInputType.number,
-                          initialValue: (allGlobalvar.English == null)
-                              ? null
-                              : allGlobalvar.English.toString(),
+                          initialValue: allGlobalvar.English,
                           textInputAction: TextInputAction.next,
                           validator: (value) {
                             if (value!.isEmpty) {
@@ -190,9 +211,7 @@ class _Marksheet_addState extends State<Marksheet_add> {
                         child: TextFormField(
                           maxLength: 2,
                           keyboardType: TextInputType.number,
-                          initialValue: (allGlobalvar.Biology == null)
-                              ? null
-                              : allGlobalvar.Biology.toString(),
+                          initialValue: allGlobalvar.Biology,
                           textInputAction: TextInputAction.next,
                           validator: (value) {
                             if (value!.isEmpty) {
@@ -233,9 +252,7 @@ class _Marksheet_addState extends State<Marksheet_add> {
                         child: TextFormField(
                           maxLength: 2,
                           keyboardType: TextInputType.number,
-                          initialValue: (allGlobalvar.Physics == null)
-                              ? null
-                              : allGlobalvar.Physics.toString(),
+                          initialValue: allGlobalvar.Physics,
                           textInputAction: TextInputAction.next,
                           validator: (value) {
                             if (value!.isEmpty) {
@@ -262,7 +279,7 @@ class _Marksheet_addState extends State<Marksheet_add> {
                   Row(
                     children: [
                       Text(
-                        "Chemistry :",
+                        "Chemistry : ${allGlobalvar.Chemistry}",
                         style: GoogleFonts.schoolbell(
                           textStyle: TextStyle(
                             fontSize: s.height * 0.03,
@@ -276,20 +293,44 @@ class _Marksheet_addState extends State<Marksheet_add> {
                         child: TextFormField(
                           maxLength: 2,
                           keyboardType: TextInputType.number,
-                          initialValue: (allGlobalvar.Chemistry == null)
-                              ? null
-                              : allGlobalvar.Chemistry.toString(),
+                          initialValue:  allGlobalvar.Chemistry,
                           validator: (value) {
                             if (value!.isEmpty) {
                               return "Enter Mark Properly";
-                            } else if (value.length < 2) {
-                              return "Enter Value under 100";
                             } else {
                               return null;
                             }
                           },
                           onSaved: (newValue) {
                             allGlobalvar.Chemistry == newValue;
+                          },
+                          onFieldSubmitted: (value) {
+                            if (formkey.currentState!.validate()) {
+                              formkey.currentState!.save();
+                              allGlobalvar.allmarcks.add(
+                                marcks(
+                                  Biologymo: allGlobalvar.Biology,
+                                  Mathsmo: allGlobalvar.Maths,
+                                  Englishmo: allGlobalvar.English,
+                                  Physicsmo: allGlobalvar.Physics,
+                                  Chemistrymo: allGlobalvar.Chemistry,
+                                ),
+                              );
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                errorsnackBar(
+                                  text: "Successfully validated !!",
+                                  color: Colors.green,
+                                ),
+                              );
+                            } else {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                errorsnackBar(
+                                  text: "Sum thing Error !!",
+                                  color: Colors.redAccent,
+                                ),
+                              );
+                            }
+                            Navigator.of(context).pop();
                           },
                           decoration: const InputDecoration(
                             border: OutlineInputBorder(),

@@ -10,10 +10,11 @@ import 'package:student_marksheet_generator_exam/view/screen/studet_detail_page.
 
 void main() {
   runApp(
-    DevicePreview(
-      enabled: !kReleaseMode,
-      builder: (context) => const MyApp(),
-    ),
+    // DevicePreview(
+    //   enabled: !kReleaseMode,
+    //   builder: (context) =>
+      const MyApp(),
+    // ),
   );
 }
 

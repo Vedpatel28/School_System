@@ -1,15 +1,20 @@
 import 'package:student_marksheet_generator_exam/view/modals/global_varibal.dart';
 
 class marcks {
-  late int? Mathsmo;
-  late int? Englishmo;
-  late int? Biologymo;
-  late int? Physicsmo;
-  late int? Chemistrymo;
+  late String? Mathsmo;
+  late String? Englishmo;
+  late String? Biologymo;
+  late String? Physicsmo;
+  late String? Chemistrymo;
 
-  sum() {
-    return allGlobalvar.totalmarcks =
-        Mathsmo! + Englishmo! + Biologymo! + Physicsmo! + Chemistrymo!;
+  sum(
+      {required Chemistrymo,
+      required Physicsmo,
+      required Biologymo,
+      required Englishmo,
+      required Mathsmo}) {
+    // return allGlobalvar.totalmarcks =
+    //     Mathsmo! + Englishmo! + Biologymo! + Physicsmo! + Chemistrymo!;
   }
 
   marcks({

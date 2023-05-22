@@ -39,20 +39,25 @@ class _pdfmarcksheetState extends State<pdfmarcksheet> {
           child: pw.Row(
             children: [
               pw.Text(
-                "Total Marks : ",
+                "Total Marks : ${allGlobalvar.Maths}",
                 style: pw.TextStyle(
                   fontSize: 14,
                   fontWeight: pw.FontWeight.bold,
                 ),
               ),
               pw.Spacer(),
-              pw.Text(
-                '${markcall.sum()}',
-                style: pw.TextStyle(
-                  fontSize: 14,
-                  fontWeight: pw.FontWeight.bold,
-                ),
-              ),
+              //   pw.Text(
+              //       '${markcall.sum(
+              //         Biologymo: allGlobalvar.Biology,
+              //         Mathsmo: allGlobalvar.Maths,
+              //         Englishmo: allGlobalvar.English,
+              //         Physicsmo: allGlobalvar.Physics,
+              //         Chemistrymo: allGlobalvar.Chemistry,) }',
+              //   style: pw.TextStyle(
+              //   fontSize: 14,
+              //   fontWeight: pw.FontWeight.bold,
+              //   ),
+              // ),
             ],
           ),
         ),
